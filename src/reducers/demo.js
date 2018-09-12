@@ -27,6 +27,18 @@ export const demo = (state=initialState, action) => {
           return el;
         })
       };
+    case 'ADD_NEW_ENTITY':
+      return {
+        ...state,
+        entityList: [
+          ...state.entityList,
+          {
+            createTime: new Date().toTimeString(),
+            status: 0, // status: 0(active), 1(complete), 2(deleted)
+            title: action.title,
+          }
+        ]
+      }
     default:
       return state;
   }

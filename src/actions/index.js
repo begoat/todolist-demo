@@ -20,3 +20,10 @@ export const changeShowStatus = (target, value) => {
     type: 'CHANGE_SHOW_STATUS'
   }
 }
+
+export const addNewEntity = (title) => {
+  return {
+    title,
+    type: 'ADD_NEW_ENTITY'
+  }
+}

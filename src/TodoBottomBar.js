@@ -5,9 +5,13 @@ import 'rsuite/dist/styles/rsuite.min.css';
 import { connect } from 'react-redux';
 import * as actions from './actions/index';
 
-import { Toggle } from 'rsuite';
+import { Toggle, InputGroup, Input, Icon } from 'rsuite';
 
 class TodoBottomBar extends Component {
+  constructor() {
+    super();
+    this.state = {newTitle: ''};
+  }
   render() {
     const {
       showActive,
@@ -18,27 +22,38 @@ class TodoBottomBar extends Component {
 
     return (
       <React.Fragment>
-        <Toggle
-          checked={showActive}
-          checkedChildren="显示 进行中的"
-          onChange={() => this.handleActiveChange(changeShowStatus)}
-          size="lg"
-          unCheckedChildren="不显示 进行中的"
-        />
-        <Toggle
-          checked={showComplete}
-          checkedChildren="显示 完成的"
-          onChange={() => this.handleCompleteChange(changeShowStatus)}
-          size="lg"
-          unCheckedChildren="不显示 完成的"
-        />
-        <Toggle
-          checked={showDeleted}
-          checkedChildren="显示 删除的"
-          onChange={() => this.handleDeleteChange(changeShowStatus)}
-          size="lg"
-          unCheckedChildren="不显示 删除的"
-        />
+        <div>
+          <Toggle
+            checked={showActive}
+            checkedChildren="显示 进行中的"
+            onChange={() => this.handleActiveChange(changeShowStatus)}
+            size="lg"
+            unCheckedChildren="不显示 进行中的"
+          />
+          <Toggle
+            checked={showComplete}
+            checkedChildren="显示 完成的"
+            onChange={() => this.handleCompleteChange(changeShowStatus)}
+            size="lg"
+            unCheckedChildren="不显示 完成的"
+          />
+          <Toggle
+            checked={showDeleted}
+            checkedChildren="显示 删除的"
+            onChange={() => this.handleDeleteChange(changeShowStatus)}
+            size="lg"
+            unCheckedChildren="不显示 删除的"
+          />
+        </div>
+        <InputGroup>
+          <Input
+            value={this.state.newTitle}
+            onChange={this.handleNewTitleChange}
+          />
+          <InputGroup.Button onClick={this.handleAddNewClick}>
+            <Icon icon="search" />
+          </InputGroup.Button>
+        </InputGroup>
       </React.Fragment>
     );
   }
@@ -54,6 +69,21 @@ class TodoBottomBar extends Component {
   handleDeleteChange = (changeShowStatus) => {
     changeShowStatus('showDeleted', !this.props.showDeleted)
   }
+
+  handleNewTitleChange = (value) => {
+    this.setState({
+      newTitle: value
+    });
+  }
+
+  handleAddNewClick = () => {
+    if (this.state.newTitle !== '') {
+      this.props.addNewEntity(this.state.newTitle);
+      this.setState({
+        newTitle: ''
+      });
+    }
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -66,6 +96,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    addNewEntity: (title) => dispatch(actions.addNewEntity(title)),
     changeShowStatus: (target, value) => dispatch(actions.changeShowStatus(target, value))
   };
 };
