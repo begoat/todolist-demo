@@ -8,11 +8,14 @@ import { Icon } from 'rsuite';
 
 class CheckIcon extends Component {
   render() {
+    const { checked } = this.props;
     return (
-      <div>
-        <Icon icon={Checked} size="lg"/>
-        <Icon icon={NotChecked} size="lg"/>
-      </div>
+      <React.Fragment>
+        {
+          checked ? <Icon icon={Checked} size="lg"/> 
+                  : <Icon icon={NotChecked} size="lg"/>
+        }
+      </ React.Fragment>
     );
   }
 }
