@@ -44,7 +44,6 @@ class TodoForm extends Component {
                 <TodoEntity 
                   key={index} 
                   {...entity}
-                  index={index}
                   changeEntityStatus={changeEntityStatus}
                 />
               );

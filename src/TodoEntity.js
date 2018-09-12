@@ -13,7 +13,7 @@ class TodoEntity extends Component {
   render() {
     const { 
       createTime, 
-      index,
+      id,
       title, 
       status, 
       changeEntityStatus,
@@ -27,15 +27,15 @@ class TodoEntity extends Component {
       >
         <div style={{flex: 1}}>
           { 
-            status === 0 ? <CheckIcon handleClick={() => changeEntityStatus(index, 1)} checked={false}/> : 
-              status === 1 ? <CheckIcon handleClick={() => changeEntityStatus(index, 0)} checked={true}/> :
+            status === 0 ? <CheckIcon handleClick={() => changeEntityStatus(id, 1)} checked={false}/> : 
+              status === 1 ? <CheckIcon handleClick={() => changeEntityStatus(id, 0)} checked={true}/> :
                 null 
           }
           <span className={status === 2 ? 'deleted' : ''}>{title}</span>
         </div>
         <div style={{flex: 1}}>
           {
-            this.state.hoverd && status !== 2 ? <DeleteIcon handleClick={() => changeEntityStatus(index, 2)}/>
+            this.state.hoverd && status !== 2 ? <DeleteIcon handleClick={() => changeEntityStatus(id, 2)}/>
                               : <span>{createTime}</span>
           }
         </div>
