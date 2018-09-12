@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import './TodoEntity.css';
 
 import CheckIcon from './svgicons/CheckIcon';
-
-import { IconButton, Icon } from 'rsuite';
-
 import DeleteIcon from './svgicons/DeleteIcon';
 
 class TodoEntity extends Component {
@@ -33,7 +31,7 @@ class TodoEntity extends Component {
               status === 1 ? <CheckIcon handleClick={() => changeEntityStatus(index, 0)} checked={true}/> :
                 null 
           }
-          {title}
+          <span className={status === 2 ? 'deleted' : ''}>{title}</span>
         </div>
         <div style={{flex: 1}}>
           {
