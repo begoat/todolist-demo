@@ -26,7 +26,7 @@ class TodoEntity extends Component {
         </div>
         <div style={{flex: 1}}>
           {
-            this.state.hoverd ? <span>deleted </span>
+            this.state.hoverd ? <span>deleted</span>
                               : <span>{createTime}</span>
           }
         </div>

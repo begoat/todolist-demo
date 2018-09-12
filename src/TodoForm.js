@@ -5,21 +5,16 @@ import 'rsuite/dist/styles/rsuite.min.css';
 import QueryInput from './QueryInput';
 import TodoEntity from './TodoEntity';
 
+import { connect } from 'react-redux';
+// import * as actions from './actions';
+
 class TodoForm extends Component {
   render() {
-    const entityList = [{
-      createTime: 'now',
-      status: 0, // status: 0(active), 1(complete), 2(deleted)
-      title: '任务1',
-    }, {
-      createTime: 'now',
-      status: 2, // status: 0(active), 1(complete), 2(deleted)
-      title: '任务2',
-    }, {
-      createTime: 'now',
-      status: 1, // status: 0(active), 1(complete), 2(deleted)
-      title: '任务3',
-    }];
+    let { entityList } = this.props;
+    if (!entityList) {
+      entityList = [];
+    }
+
     return (
       <div>
         <QueryInput />
@@ -33,4 +28,15 @@ class TodoForm extends Component {
   }
 }
 
-export default TodoForm;
+const mapStateToProps = (state) => {
+  return {
+    entityList: state.demo.entityList
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
