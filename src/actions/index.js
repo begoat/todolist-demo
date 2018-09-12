@@ -13,8 +13,9 @@ export const changeQueryStr = (value) => {
   }
 }
 
-export const changeShowStatus = (value) => {
+export const changeShowStatus = (target, value) => {
   return {
+    target,
     value,
     type: 'CHANGE_SHOW_STATUS'
   }

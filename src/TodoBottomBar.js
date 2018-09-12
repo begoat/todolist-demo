@@ -9,27 +9,33 @@ import { Toggle } from 'rsuite';
 
 class TodoBottomBar extends Component {
   render() {
-    const { showStatus, changeShowStatus } = this.props;
+    const {
+      showActive,
+      showComplete,
+      showDeleted,
+      changeShowStatus 
+    } = this.props;
+
     return (
       <React.Fragment>
         <Toggle
-          checked={[7, 6, 5, 4].includes(showStatus)}
+          checked={showActive}
           checkedChildren="显示 进行中的"
-          onChange={() => this.handleActiveChange(showStatus, changeShowStatus)}
+          onChange={() => this.handleActiveChange(changeShowStatus)}
           size="lg"
           unCheckedChildren="不显示 进行中的"
         />
         <Toggle
-          checked={[7, 6, 3, 2].includes(showStatus)}
+          checked={showComplete}
           checkedChildren="显示 完成的"
-          onChange={() => this.handleCompleteChange(showStatus, changeShowStatus)}
+          onChange={() => this.handleCompleteChange(changeShowStatus)}
           size="lg"
           unCheckedChildren="不显示 完成的"
         />
         <Toggle
-          checked={[7, 5, 3, 1].includes(showStatus)}
+          checked={showDeleted}
           checkedChildren="显示 删除的"
-          onChange={() => this.handleDeleteChange(showStatus, changeShowStatus)}
+          onChange={() => this.handleDeleteChange(changeShowStatus)}
           size="lg"
           unCheckedChildren="不显示 删除的"
         />
@@ -37,40 +43,30 @@ class TodoBottomBar extends Component {
     );
   }
 
-  handleActiveChange = (showStatus, changeShowStatus) => {
-    if ([7, 6, 5, 4].includes(showStatus)) {
-      changeShowStatus(showStatus - 4);
-    } else {
-      changeShowStatus(showStatus + 4);
-    }
+  handleActiveChange = (changeShowStatus) => {
+    changeShowStatus('showActive', !this.props.showActive)
   }
 
-  handleCompleteChange = (showStatus, changeShowStatus) => {
-    if ([7, 6, 3, 2].includes(showStatus)) {
-      changeShowStatus(showStatus - 2);
-    } else {
-      changeShowStatus(showStatus + 2);
-    }
+  handleCompleteChange = (changeShowStatus) => {
+    changeShowStatus('showComplete', !this.props.showComplete)
   }
 
-  handleDeleteChange = (showStatus, changeShowStatus) => {
-    if ([7, 5, 3, 1].includes(showStatus)) {
-      changeShowStatus(showStatus - 1);
-    } else {
-      changeShowStatus(showStatus + 1);
-    }
+  handleDeleteChange = (changeShowStatus) => {
+    changeShowStatus('showDeleted', !this.props.showDeleted)
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    showStatus: state.system.showStatus,
+    showActive: state.system.showActive,
+    showComplete: state.system.showComplete,
+    showDeleted: state.system.showDeleted,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeShowStatus: (value) => dispatch(actions.changeShowStatus(value))
+    changeShowStatus: (target, value) => dispatch(actions.changeShowStatus(target, value))
   };
 };
 

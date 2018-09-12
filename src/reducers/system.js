@@ -1,6 +1,9 @@
 const initialState = {
   queryStr: '',
-  showStatus: 7, // linux filesystem like status 4 2 1 active/complete/deleted
+  // showStatus: 7, // linux filesystem like status 4 2 1 active/complete/deleted
+  showActive: true,
+  showComplete: true,
+  showDeleted: true,
 };
 
 export const system = (state=initialState, action) => {
@@ -8,7 +11,7 @@ export const system = (state=initialState, action) => {
     case 'CHANGE_QUERY_STR':
       return {...state, queryStr: action.value}
     case 'CHANGE_SHOW_STATUS':
-      return {...state, showStatus: action.value}
+      return {...state, [action.target]: action.value}
     default:
       return state;
   }
