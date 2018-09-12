@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import demo from './demo';
+import system from './system';
 
 export const AppReducer = combineReducers({
-  demo
+  demo,
+  system
 });
 
 export default AppReducer;
