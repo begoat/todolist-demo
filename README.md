@@ -7,7 +7,7 @@
 4. modify todo_entity
 5. show deleted / hide deleted
 6. complete to todo_entity
-7. 
+7. switch pages
 
 
 
