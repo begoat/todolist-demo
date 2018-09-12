@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import TodoBottomBar from './TodoBottomBar';
 import TodoFrom from './TodoForm';
 import TodoTopBar from './TodoTopBar';
+
+import './App.css';
 
 class App extends Component {
   render() {

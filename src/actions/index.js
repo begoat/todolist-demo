@@ -1,6 +1,6 @@
-export const changeEntityStatus = (index, status) => {
+export const changeEntityStatus = (id, status) => {
   return {
-    index,
+    id,
     status,
     type: 'CHANGE_ENTITY_STATUS'
   }
@@ -13,9 +13,9 @@ export const changeQueryStr = (value) => {
   }
 }
 
-export const changeShowStatus = (target, value) => {
+export const changeShowStatus = (targetAttribute, value) => {
   return {
-    target,
+    targetAttribute,
     value,
     type: 'CHANGE_SHOW_STATUS'
   }

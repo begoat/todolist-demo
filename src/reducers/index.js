@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import demo from './demo';
 import system from './system';
 

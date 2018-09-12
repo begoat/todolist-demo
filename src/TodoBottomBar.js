@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-
-import 'rsuite/dist/styles/rsuite.min.css';
+import { Toggle, InputGroup, Input, Icon, Alert } from 'rsuite';
 
 import { connect } from 'react-redux';
 import * as actions from './actions/index';
 
-import { Toggle, InputGroup, Input, Icon, Alert } from 'rsuite';
 
 class TodoBottomBar extends Component {
   constructor() {
     super();
     this.state = {newTitle: ''};
   }
+  
   render() {
     const {
       showActive,

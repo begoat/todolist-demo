@@ -10,13 +10,14 @@ export const demo = (state=initialState, action) => {
       return {
         ...state, 
         entityList: state.entityList.map((el) => {
-          if (el.id === action.index) {
+          if (el.id === action.id) {
             return {...el, status: action.status};
           }
 
           return el;
         })
       };
+
     case 'ADD_NEW_ENTITY':
       return {
         ...state,
@@ -30,6 +31,7 @@ export const demo = (state=initialState, action) => {
           }
         ]
       }
+      
     default:
       return state;
   }

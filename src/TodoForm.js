@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import 'rsuite/dist/styles/rsuite.min.css';
+import { connect } from 'react-redux';
+import * as actions from './actions/index';
 
 import QueryInput from './QueryInput';
 import TodoEntity from './TodoEntity';
-
-import { connect } from 'react-redux';
-import * as actions from './actions/index';
 
 class TodoForm extends Component {
   render() {
@@ -18,12 +16,13 @@ class TodoForm extends Component {
       showComplete,
       showDeleted,
     } = this.props;
+
     if (!entityList) {
       entityList = [];
     }
 
     return (
-      <div>
+      <React.Fragment>
         <QueryInput />
         {
           entityList
@@ -49,7 +48,7 @@ class TodoForm extends Component {
               );
             })
         }
-      </div>
+      </React.Fragment>
     );
   }
 }

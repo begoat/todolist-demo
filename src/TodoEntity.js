@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './TodoEntity.css';
 
 import CheckIcon from './svgicons/CheckIcon';
 import DeleteIcon from './svgicons/DeleteIcon';
+
+import './TodoEntity.css';
 
 class TodoEntity extends Component {
   constructor() {
