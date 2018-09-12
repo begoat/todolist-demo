@@ -5,7 +5,7 @@ import 'rsuite/dist/styles/rsuite.min.css';
 import { connect } from 'react-redux';
 import * as actions from './actions/index';
 
-import { Toggle, InputGroup, Input, Icon } from 'rsuite';
+import { Toggle, InputGroup, Input, Icon, Alert } from 'rsuite';
 
 class TodoBottomBar extends Component {
   constructor() {
@@ -82,6 +82,8 @@ class TodoBottomBar extends Component {
       this.setState({
         newTitle: ''
       });
+    } else {
+      Alert.warning('标题不为空');
     }
   }
 }

@@ -1,12 +1,12 @@
 ## target demo: http://todomvc.com/examples/react/#/
 
 ## feature:
-1. add todo_entity
-2. delete todo_entity
-3. query todo_entity
-4. modify todo_entity
-5. show deleted / hide deleted
-6. complete to todo_entity
+- [x] add todo_entity
+- [x] delete todo_entity 
+- [x] query todo_entity
+- [ ] modify todo_entity
+- [x] show deleted / hide deleted
+- [x] complete to todo_entity
 7. switch pages
 9. animation
 
