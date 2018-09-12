@@ -16,6 +16,17 @@ const initialState = {
 
 export const demo = (state=initialState, action) => {
   switch (action.type) {
+    case 'CHANGE_ENTITY_STATUS':
+      return {
+        ...state, 
+        entityList: state.entityList.map((el, index) => {
+          if (index === action.index) {
+            return {...el, status: action.status};
+          }
+
+          return el;
+        })
+      };
     default:
       return state;
   }

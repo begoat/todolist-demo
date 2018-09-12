@@ -6,11 +6,11 @@ import QueryInput from './QueryInput';
 import TodoEntity from './TodoEntity';
 
 import { connect } from 'react-redux';
-// import * as actions from './actions';
+import * as actions from './actions/index';
 
 class TodoForm extends Component {
   render() {
-    let { entityList } = this.props;
+    let { entityList, changeEntityStatus } = this.props;
     if (!entityList) {
       entityList = [];
     }
@@ -20,7 +20,14 @@ class TodoForm extends Component {
         <QueryInput />
         {
           entityList.map((entity, index) => {
-            return <TodoEntity key={index} {...entity}/>;
+            return (
+              <TodoEntity 
+                key={index} 
+                {...entity}
+                index={index}
+                changeEntityStatus={changeEntityStatus}
+              />
+            );
           })  
         }
       </div>
@@ -36,6 +43,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    changeEntityStatus: (index, status) => dispatch(actions.changeEntityStatus(index, status))
   };
 };
 
