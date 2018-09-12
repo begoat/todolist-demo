@@ -35,7 +35,7 @@ class TodoEntity extends Component {
         </div>
         <div style={{flex: 1}}>
           {
-            this.state.hoverd ? <DeleteIcon handleClick={() => changeEntityStatus(index, 2)}/>
+            this.state.hoverd && status !== 2 ? <DeleteIcon handleClick={() => changeEntityStatus(index, 2)}/>
                               : <span>{createTime}</span>
           }
         </div>
