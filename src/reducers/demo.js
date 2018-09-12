@@ -33,7 +33,7 @@ export const demo = (state=initialState, action) => {
         entityList: [
           ...state.entityList,
           {
-            createTime: new Date().toTimeString(),
+            createTime: new Date().toLocaleString(),
             status: 0, // status: 0(active), 1(complete), 2(deleted)
             title: action.title,
           }
