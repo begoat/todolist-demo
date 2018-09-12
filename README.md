@@ -8,6 +8,7 @@
 5. show deleted / hide deleted
 6. complete to todo_entity
 7. switch pages
+9. animation
 
 
 

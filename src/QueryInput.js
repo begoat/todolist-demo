@@ -3,11 +3,19 @@ import React, { Component } from 'react';
 import 'rsuite/dist/styles/rsuite.min.css';
 import { InputGroup, Input, Icon } from 'rsuite';
 
+import { connect } from 'react-redux';
+import * as actions from './actions/index';
+
 class QueryInput extends Component {
   render() {
+    const { queryStr, changeQueryStr } = this.props;
     return (
       <InputGroup>
-        <Input placeholder="type the title of todo-entity you want to search" />
+        <Input
+          value={queryStr}
+          onChange={changeQueryStr}
+          placeholder="type the title of todo-entity you want to search"
+        />
         <InputGroup.Button>
           <Icon icon="search" />
         </InputGroup.Button>
@@ -16,4 +24,16 @@ class QueryInput extends Component {
   }
 }
 
-export default QueryInput;
+const mapStateToProps = (state) => {
+  return {
+    queryStr: state.system.queryStr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeQueryStr: (value) => dispatch(actions.changeQueryStr(value))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QueryInput);

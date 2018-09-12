@@ -10,7 +10,7 @@ import * as actions from './actions/index';
 
 class TodoForm extends Component {
   render() {
-    let { entityList, changeEntityStatus } = this.props;
+    let { entityList, changeEntityStatus, queryStr } = this.props;
     if (!entityList) {
       entityList = [];
     }
@@ -19,16 +19,18 @@ class TodoForm extends Component {
       <div>
         <QueryInput />
         {
-          entityList.map((entity, index) => {
-            return (
-              <TodoEntity 
-                key={index} 
-                {...entity}
-                index={index}
-                changeEntityStatus={changeEntityStatus}
-              />
-            );
-          })  
+          entityList
+            .filter((entity) => entity.title.includes(queryStr))
+            .map((entity, index) => {
+              return (
+                <TodoEntity 
+                  key={index} 
+                  {...entity}
+                  index={index}
+                  changeEntityStatus={changeEntityStatus}
+                />
+              );
+            })
         }
       </div>
     );
@@ -37,7 +39,8 @@ class TodoForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    entityList: state.demo.entityList
+    entityList: state.demo.entityList,
+    queryStr: state.system.queryStr,
   };
 };
 

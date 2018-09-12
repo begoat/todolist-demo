@@ -5,6 +5,8 @@ const initialState = {
 
 export const system = (state=initialState, action) => {
   switch (action.type) {
+    case 'CHANGE_QUERY_STR':
+      return {...state, queryStr: action.value}
     default:
       return state;
   }
