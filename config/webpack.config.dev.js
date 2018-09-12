@@ -108,7 +108,7 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx|mjs)$/,
+      test: /\.(js|jsx|mjs)$/,
         enforce: 'pre',
         use: [
           {
@@ -187,6 +187,15 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.svg$/,
+            use: [{
+              loader: 'svg-sprite-loader',
+              options: {
+                symbolId: 'icon-[name]'
+              }
+            }]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
