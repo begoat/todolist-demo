@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import CheckIcon from './svgicons/CheckIcon';
-import DeleteIcon from './svgicons/DeleteIcon';
+import CheckIcon from '../svgicons/CheckIcon';
+import DeleteIcon from '../svgicons/DeleteIcon';
 
 import './TodoEntity.css';
 

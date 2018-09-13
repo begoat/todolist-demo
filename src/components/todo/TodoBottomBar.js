@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Toggle, InputGroup, Input, Icon, Alert } from 'rsuite';
 
 import { connect } from 'react-redux';
-import * as actions from './actions/index';
+import * as actions from '../../actions';
 
 
 class TodoBottomBar extends Component {
