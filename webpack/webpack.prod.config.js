@@ -29,7 +29,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      inject: true
+      inject: false
     }),
     new CompressionPlugin({
       // serve .gz file in server side
