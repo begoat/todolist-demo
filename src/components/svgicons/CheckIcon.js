@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Icon } from 'rsuite';
 
-import Checked from '../assets/checked.svg';
-import NotChecked from '../assets/notchecked.svg';
-
+import Checked from '../../assets/checked.svg';
+import NotChecked from '../../assets/notchecked.svg';
 
 class CheckIcon extends Component {
   render() {

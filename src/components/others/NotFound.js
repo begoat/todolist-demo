@@ -1,5 +1,5 @@
 import * as React from 'react';
-import img from '../assets/404.png';
+import img from '../../assets/404.png';
 
 export default class extends React.Component {
   render() {

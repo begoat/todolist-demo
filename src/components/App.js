@@ -5,12 +5,12 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import TodoBottomBar from './TodoBottomBar';
-import TodoFrom from './TodoForm';
-import TodoTopBar from './TodoTopBar';
-import LoginComponent from './components/login';
+import TodoBottomBar from './todo/TodoBottomBar';
+import TodoFrom from './todo/TodoForm';
+import TodoTopBar from './todo/TodoTopBar';
+import LoginComponent from './login';
 import NotFound from './others/NotFound';
-import { AuthHOC } from './utils/AuthHOC';
+import { AuthHOC } from '../utils/AuthHOC';
 
 import './App.css';
 

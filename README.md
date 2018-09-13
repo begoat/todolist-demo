@@ -7,15 +7,11 @@
 - [ ] modify todo_entity
 - [x] show deleted / hide deleted
 - [x] complete to todo_entity
-7. switch pages
-9. animation
+- [ ] switch pages if too much
+- [ ] animation (react-router)
+- [x] when downlading react.js
+- [ ] responsive design for mobile
 
-
-
-### todo-entity: 
-status: active/complete/deleted
-attributes: c_time, status, title
-
-### system-setting:
-1. show_status: active/complete/deleted (multi-selected)
-2. query_string:
+## tech stack:
+1. React + Redux + Redux Thunk + React Router + rsuite + less
+2. 
