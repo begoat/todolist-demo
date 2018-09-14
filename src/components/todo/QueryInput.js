@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { InputGroup, Input, Icon } from 'rsuite';
-import 'rsuite/dist/styles/rsuite.min.css';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
