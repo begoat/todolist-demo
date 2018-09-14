@@ -12,7 +12,6 @@ import LoginComponent from './login';
 import NotFound from './others/NotFound';
 import { AuthHOC } from '../utils/AuthHOC';
 
-import 'rsuite/styles/less/index.less';
 import './App.less';
 
 const MainApp = () => {
@@ -37,7 +36,7 @@ class App extends Component {
       <Switch>
         <Route exact={true} path="/" render={() => <Redirect to="/main"/>} />
         <Route path="/login" component={LoginComponent} />
-        <Route exact path="/main" component={AuthHOC(MainApp)}/>
+        <Route exact path="/main" component={(MainApp)}/>
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

@@ -4,6 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractLess = new ExtractTextPlugin('style.[hash].css');
+// https://webpack.docschina.org/loaders/less-loader/#src/components/Sidebar/Sidebar.jsx
+// const extractLess = new ExtractTextPlugin({
+//   filename: "[name].[contenthash].css",
+//   disable: process.env.NODE_ENV === "development"
+// });
+const rsuiteStylePath = path.resolve(__dirname, '../node_modules/rsuite/styles');
+
 module.exports = {
 	entry: [
 		path.join(__dirname, '../src/index.js') // get the absolute path of the index.js
@@ -18,23 +27,22 @@ module.exports = {
         }
       },
       {
-        test: /\.less$/,
-				use: [
-          {
-            loader: 'style-loader' // creates style nodes from JS strings
-          }, {
-            loader: 'css-loader' // translates CSS into CommonJS
-          }, {
-            loader: 'less-loader', // compiles Less to CSS
-            options: {
-              javascriptEnabled: true
+        test: /\.(less|css)$/,
+        loader: extractLess.extract({
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                javascriptEnabled: true
+              }
             }
-          }
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+          ],
+          // use style-loader in development
+          fallback: 'style-loader?{attrs:{prop: "value"}}'
+        })
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -63,17 +71,18 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    extractLess,
     new Dotenv(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      inject: false
+      inject: true
     }),
-    new CompressionPlugin({
-      // serve .gz file in server side
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
+    // new CompressionPlugin({
+    //   // serve .gz file in server side
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // })
   ]
 }
