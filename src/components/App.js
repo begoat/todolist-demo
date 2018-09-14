@@ -13,7 +13,6 @@ import NotFound from './others/NotFound';
 import { AuthHOC } from '../utils/AuthHOC';
 
 import 'rsuite/styles/less/index.less';
-
 import './App.less';
 
 const MainApp = () => {

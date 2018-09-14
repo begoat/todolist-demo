@@ -47,9 +47,14 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: {
-          loader: 'svg-inline-loader'
-        }
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'icon-[name]'
+            }
+          }
+        ]
       }
     ]
   },
