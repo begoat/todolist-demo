@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import registerServiceWorker from './registerServiceWorker';
 
 import AppReducer from './reducers/index';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -24,4 +23,3 @@ ReactDOM.render(
     </Provider>
   </Router>, 
 document.getElementById('app'));
-registerServiceWorker();
