@@ -4,7 +4,7 @@
   "description": "todolist react version setup from scretch",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --display-error-details --config webpack/webpack.dev.config.js",
+    "start": "webpack-dev-server --open --mode development --display-error-details --config webpack/webpack.dev.config.js",
     "build": "webpack --mode production --config webpack/webpack.prod.config.js"
   },
   "repository": {
