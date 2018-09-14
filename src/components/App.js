@@ -32,6 +32,8 @@ const MainApp = () => {
 
 class App extends Component {
   render() {
+    let test = {1: 2, 2:3 };
+    console.log({...test, 2: 5});
     return (
       <Switch>
         <Route exact={true} path="/" render={() => <Redirect to="/main"/>} />

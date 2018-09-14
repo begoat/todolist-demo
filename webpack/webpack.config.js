@@ -5,12 +5,11 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractLess = new ExtractTextPlugin('style.[hash].css');
-// https://webpack.docschina.org/loaders/less-loader/#src/components/Sidebar/Sidebar.jsx
-// const extractLess = new ExtractTextPlugin({
-//   filename: "[name].[contenthash].css",
-//   disable: process.env.NODE_ENV === "development"
-// });
+// https://webpack.docschina.org/loaders/less-loader/#%E7%A4%BA%E4%BE%8B
+const extractLess = new ExtractTextPlugin({
+  filename: 'style.[hash].css',
+  disable: process.env.NODE_ENV === "development"
+});
 const rsuiteStylePath = path.resolve(__dirname, '../node_modules/rsuite/styles');
 
 module.exports = {
@@ -41,7 +40,7 @@ module.exports = {
             }
           ],
           // use style-loader in development
-          fallback: 'style-loader?{attrs:{prop: "value"}}'
+          fallback: "style-loader"
         })
       },
       {
@@ -66,6 +65,14 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, '../public'),
+    disableHostCheck: true,
+    historyApiFallback: true,
+    compress: true,
+    host: '0.0.0.0',
+    port: 3000
+  },
   output: {
     path: path.join(__dirname, "../dist"),
     filename: 'bundle.js'
@@ -77,12 +84,12 @@ module.exports = {
       template: './public/index.html',
       inject: true
     }),
-    // new CompressionPlugin({
-    //   // serve .gz file in server side
-    //   algorithm: 'gzip',
-    //   test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
-    //   threshold: 10240,
-    //   minRatio: 0.8
-    // })
+    new CompressionPlugin({
+      // serve .gz file in server side
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ]
 }
