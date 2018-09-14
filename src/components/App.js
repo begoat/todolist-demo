@@ -12,7 +12,7 @@ import LoginComponent from './login';
 import NotFound from './others/NotFound';
 import { AuthHOC } from '../utils/AuthHOC';
 
-// import './App.css';
+import './App.less';
 
 const MainApp = () => {
   return(

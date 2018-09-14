@@ -10,7 +10,7 @@ import ReduxThunk from 'redux-thunk';
 import { logger } from './utils/ReduxLogMid';
 
 import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
+import './index.less';
 
 // redux-devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

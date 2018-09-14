@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import CheckIcon from '../svgicons/CheckIcon';
 import DeleteIcon from '../svgicons/DeleteIcon';
 
-import './TodoEntity.css';
+import './TodoEntity.less';
 
 class TodoEntity extends Component {
   constructor() {

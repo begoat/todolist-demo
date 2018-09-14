@@ -4,7 +4,7 @@ import asyncio
 
 app = Sanic()
 
-CORS_HOST = 'http://localhost:3000'
+CORS_HOST = 'http://0.0.0.0:3000'
 
 @app.route('/', methods=['POST'])
 async def test(request):

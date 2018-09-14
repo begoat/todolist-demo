@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: [
@@ -18,7 +19,34 @@ module.exports = {
       },
       {
         test: /\.less$/,
-				use: ["style-loader", "css-loader", "less-loader"]
+				use: [
+          {
+            loader: 'style-loader' // creates style nodes from JS strings
+          }, {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }, {
+            loader: 'less-loader' // compiles Less to CSS
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-inline-loader'
+        }
       }
     ]
   },
@@ -27,6 +55,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       inject: false

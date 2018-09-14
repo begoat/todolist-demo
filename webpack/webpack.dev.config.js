@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: [
@@ -25,6 +26,25 @@ module.exports = {
             loader: 'less-loader' // compiles Less to CSS
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-inline-loader'
+        }
       }
     ]
   },
@@ -40,4 +60,7 @@ module.exports = {
     host: '0.0.0.0',
     port: 3000
   },
+  plugins: [
+    new Dotenv()
+  ]
 }
