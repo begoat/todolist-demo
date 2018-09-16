@@ -14,7 +14,8 @@ const rsuiteStylePath = path.resolve(__dirname, '../node_modules/rsuite/styles')
 
 module.exports = {
 	entry: [
-		path.join(__dirname, '../src/index.js') // get the absolute path of the index.js
+    path.join(__dirname, '../src/utils/polyfill.js'),
+		path.join(__dirname, '../src/index.js')
   ],
   module: {
     rules: [
