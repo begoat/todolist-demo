@@ -10,7 +10,7 @@ class CheckIcon extends Component {
     return (
       <React.Fragment>
         {
-          checked ? <Icon onClick={handleClick} icon={Checked} size="lg"/> 
+          checked ? <Icon onClick={handleClick} icon={Checked} svgStyle={{fill: 'blue'}} size="lg"/> 
                   : <Icon onClick={handleClick} icon={NotChecked} size="lg"/>
         }
       </React.Fragment>

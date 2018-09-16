@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Button } from 'rsuite';
+
 import CheckIcon from '../svgicons/CheckIcon';
 import DeleteIcon from '../svgicons/DeleteIcon';
 
@@ -21,23 +23,25 @@ class TodoEntity extends Component {
     } = this.props;
 
     return (
-      <div 
-        style={{display: 'flex'}}
+      <div
+        className={`${status === 1 ? "complete" : ""} ToDoEntity`}
         onMouseEnter={() => this.setHoverState(true)}
         onMouseLeave={() => this.setHoverState(false)}
       >
-        <div style={{flex: 1}}>
-          { 
-            status === 0 ? <CheckIcon handleClick={() => changeEntityStatus(id, 1)} checked={false}/> : 
-              status === 1 ? <CheckIcon handleClick={() => changeEntityStatus(id, 0)} checked={true}/> :
-                null 
-          }
+        <div style={{flex: 6}}>
+          <div className="ToDoEntity-Checkbox">
+            {
+              status === 0 ? <CheckIcon handleClick={() => changeEntityStatus(id, 1)} checked={false}/> : 
+                status === 1 ? <CheckIcon handleClick={() => changeEntityStatus(id, 0)} checked={true}/> :
+                  null
+            }
+          </div>
           <span className={status === 2 ? 'deleted' : ''}>{title}</span>
         </div>
+        <span style={{flex: 3}} className={status === 2 ? 'deleted' : ''}>{createTime}</span>
         <div style={{flex: 1}}>
           {
-            this.state.hoverd && status !== 2 ? <DeleteIcon handleClick={() => changeEntityStatus(id, 2)}/>
-                              : <span>{createTime}</span>
+            status !== 2 && <Button size="xs" onClick={() => changeEntityStatus(id, 2)}>删除</Button>
           }
         </div>
       </div>

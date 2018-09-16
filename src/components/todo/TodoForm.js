@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-import QueryInput from './QueryInput';
+// import QueryInput from './QueryInput';
 import TodoEntity from './TodoEntity';
+
+import './ToDoForm.less';
 
 class TodoForm extends Component {
   render() {
@@ -17,41 +19,91 @@ class TodoForm extends Component {
       showDeleted,
     } = this.props;
 
-    if (!entityList) {
-      entityList = [];
+    let activeList = [], completeList = [], deletedList = [];
+    if (entityList) {
+      entityList
+        .filter((entity) => entity.title.includes(queryStr))
+        // will it accect drag and drop if the data structure is like this
+        .map((entity) => {
+          if (entity.status === 0) {
+            activeList.push(entity);
+          } else if (entity.status === 1) {
+            completeList.push(entity);
+          } else if (entity.status === 2) {
+            deletedList.push(entity);
+          } else {
+            console.log('weird status of the entity:', entity);
+          }
+        });
     }
-
+    
     return (
-      <React.Fragment>
-        <QueryInput />
+      <div className="ToDoForm">
+        { 
+          showActive && 
+          <div className="ToDoFormTitleBar">
+            <span className="ToDoFormTitleText">进行中的</span>
+            <span className="ToDoFormTitleCount">{activeList.length}</span>
+          </div>
+        }
         {
-          entityList
-            .filter((entity) => entity.title.includes(queryStr))
-            .filter((entity) => {
-              if (entity.status === 0) {
-                return showActive;
-              } else if (entity.status === 1) {
-                return showComplete;
-              } else if (entity.status === 2) {
-                return showDeleted;
-              }
-
-              return false;
-            })
-            .map((entity, index) => {
-              return (
-                <TodoEntity 
+          showActive && activeList.map((entity, index) => {
+            return (
+              <TodoEntity 
+                key={index} 
+                {...entity}
+                changeEntityStatus={changeEntityStatus}
+              />
+            );
+          })
+        }
+        { 
+          showComplete &&
+          <div className="ToDoFormTitleBar">
+            <span className="ToDoFormTitleText">已完成的</span>
+            <span className="ToDoFormTitleCount">{completeList.length}</span>
+          </div>
+        }
+        {
+          showComplete && completeList.map((entity, index) => {
+            return (
+              <TodoEntity 
+                key={index} 
+                {...entity}
+                changeEntityStatus={changeEntityStatus}
+              />
+            );
+          })
+        }
+        { 
+          showDeleted &&
+          <div className="ToDoFormTitleBar">
+            <span className="ToDoFormTitleText">已删除的</span>
+            <span className="ToDoFormTitleCount">{deletedList.length}</span>
+          </div>
+        }
+        {
+          showDeleted && deletedList.map((entity, index) => {
+            return (
+              <TodoEntity 
+                key={index} 
+                {...entity}
+                changeEntityStatus={changeEntityStatus}
+              />
+            );
+          })
+        }
+      </div>
+    );
+  }
+}
+/*
+<TodoEntity 
                   key={index} 
                   {...entity}
                   changeEntityStatus={changeEntityStatus}
                 />
-              );
-            })
-        }
-      </React.Fragment>
-    );
-  }
-}
+*/
 
 const mapStateToProps = (state) => {
   return {
