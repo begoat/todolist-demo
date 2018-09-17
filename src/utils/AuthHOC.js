@@ -3,12 +3,7 @@ import { Redirect, withRouter } from 'react-router';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-
-const LoadingAnimationPage = () => (
-  <div>
-    正在尝试请求后端 尝试验证token登录
-  </div>
-);
+import LoadingAnimationPage from '../components/others/LoadingSvg';
 
 export const AuthHOC = (Component) => {
   class AuthContainer extends React.Component {
