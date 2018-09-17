@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Redirect } from 'react-router';
 import { NavLink, withRouter } from 'react-router-dom';
-
+import { Button } from 'rsuite';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
@@ -16,7 +16,7 @@ export class LoginSection extends React.Component {
 
     return(
       <div>
-        <button onClick={this.props.requestLogin}>点击登录()</button>
+        <Button appearance={'primary'} onClick={this.props.requestLogin}>点击登录()</Button>
         <NavLink to="/main">跳转ToDo页面(验证HOC)</NavLink>
       </div>
     );

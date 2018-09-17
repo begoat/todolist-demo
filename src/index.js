@@ -18,6 +18,7 @@ try {
   }
   
   preloadedState = JSON.parse(localStorage.getItem('todostore'));
+  preloadedState = {...preloadedState, auth: {isAuthenticated: 0, redirectToReferrer: false}};
 } catch(e) {
   console.log('error', e);
   preloadedState = {};

@@ -5,13 +5,19 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import LoadingAnimationPage from '../components/others/LoadingSvg';
 
+// const LoadingAnimationPage = () => {
+//   return (
+//     <div>加载中...</div>
+//   )
+// }
+
 export const AuthHOC = (Component) => {
   class AuthContainer extends React.Component {
     componentDidMount() {
       if (this.props.isAuthenticated !== 1) {
         this.props.verifyToken();
       }
-    } 
+    }
 
     render() {
       return this.props.isAuthenticated === 0 ? <LoadingAnimationPage /> : 
