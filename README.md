@@ -12,6 +12,7 @@
 1. https://stackoverflow.com/questions/47721169/babel-vs-babel-core-vs-babel-loader-vs-babel-preset-2015-vs-babel-preset-react-v?rq=1
 
 ### rodemap
+- [x] add modify ToDoEntity functionality
 - [x] localstorage
 - [ ] usage of less
 - [x] more user-friendly promt

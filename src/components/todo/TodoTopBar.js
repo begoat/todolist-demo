@@ -6,12 +6,13 @@ import ViewSetting from './SettingBar';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+import { titleRegex } from '../../utils/index';
+
 import './TodoTopBar.less';
 
 class ToDoTopBar extends Component {
   constructor() {
     super();
-    this.titleRegex = new RegExp("^[\\u4e00-\\u9fa5a-zA-Z0-9]{1,30}$");
     this.state = {
       title: '',
       showSetting: false
@@ -66,7 +67,7 @@ class ToDoTopBar extends Component {
   }
 
   handleAddClick = () => {
-    if (this.titleRegex.test(this.state.title)) {
+    if (titleRegex.test(this.state.title)) {
       this.props.addNewEntity(this.state.title);
       this.setState({
         title: ''

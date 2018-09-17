@@ -38,6 +38,18 @@ export const demo = (state=initialState, action) => {
         entityList: []
       };
 
+    case 'CHANGE_ENTITY_INFO':
+      return {
+        ...state,
+        entityList: state.entityList.map((el) => {
+          if (el.id === action.id) {
+            return {...el, status: action.status, createTime: action.createTime, title: action.title};
+          }
+
+          return el;
+        })
+      }
+
     default:
       return state;
   }

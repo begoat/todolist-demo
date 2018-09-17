@@ -83,6 +83,16 @@ export const addNewEntity = (title) => {
   };
 };
 
+export const changeEntityInfo = (id, title, status, createTime) => {
+  return {
+    id,
+    title,
+    status,
+    createTime,
+    type: 'CHANGE_ENTITY_INFO'
+  }
+}
+
 export const clearAll = () => {
   return {
     type: 'CLEAR_ALL'

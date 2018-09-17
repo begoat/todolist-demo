@@ -11,3 +11,5 @@ export const timeoutWrapper = (ms, promise) => {
     promise.then(resolve, reject);
   });
 };
+
+export const titleRegex = new RegExp("^[\\u4e00-\\u9fa5a-zA-Z0-9]{1,30}$");

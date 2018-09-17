@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom'
 import { Button } from 'rsuite';
 
 import CheckIcon from '../svgicons/CheckIcon';
-import DeleteIcon from '../svgicons/DeleteIcon';
 
 import './TodoEntity.less';
 
@@ -39,9 +38,12 @@ class TodoEntity extends Component {
           <span className={status === 2 ? 'deleted' : ''}>{title}</span>
         </div>
         <span style={{flex: 3}} className={status === 2 ? 'deleted' : ''}>{createTime}</span>
-        <div style={{flex: 1}}>
+        <div style={{flex: 2}}>
           {
             status !== 2 && <Button size="xs" onClick={() => changeEntityStatus(id, 2)}>删除</Button>
+          }
+          {
+            status !== 2 && <Button size="xs" color="blue" onClick={() => this.props.history.push('/edit/'+id)}>编辑</Button>
           }
         </div>
       </div>
@@ -53,4 +55,4 @@ class TodoEntity extends Component {
   }  
 }
 
-export default TodoEntity;
+export default withRouter(TodoEntity);
