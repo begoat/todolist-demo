@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, Input, Icon, Alert } from 'rsuite';
+import { InputGroup, Input, Icon, Alert, Button } from 'rsuite';
 import AddIcon from '../../assets/add.svg';
 import SettingIcon from '../../assets/setting.svg';
 import ViewSetting from './SettingBar';
@@ -47,6 +47,7 @@ class ToDoTopBar extends Component {
                 <Icon icon={SettingIcon} svgStyle={{fill: 'rgba(47,47,47,0.98)'}} className="ToDoTop-icon"/>
               </InputGroup.Button>
             </InputGroup>
+            <Button color="cyan" onClick={this.handleClearAllClicked}>清空</Button>
           </div>
         </header>
         <div className={!this.state.showSetting ? 'setting-hidden' : ''}>
@@ -87,6 +88,10 @@ class ToDoTopBar extends Component {
       title: value
     });
   }
+
+  handleClearAllClicked = () => {
+    this.props.clearAll();
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -100,7 +105,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addNewEntity: (title) => dispatch(actions.addNewEntity(title)),
-    changeShowStatus: (target, value) => dispatch(actions.changeShowStatus(target, value))
+    changeShowStatus: (target, value) => dispatch(actions.changeShowStatus(target, value)),
+    clearAll: () => dispatch(actions.clearAll())
   };
 };
 

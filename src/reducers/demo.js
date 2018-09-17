@@ -30,8 +30,14 @@ export const demo = (state=initialState, action) => {
             title: action.title,
           }
         ]
-      }
+      };
       
+    case 'CLEAR_ALL':
+      return {
+        ...state,
+        entityList: []
+      };
+
     default:
       return state;
   }

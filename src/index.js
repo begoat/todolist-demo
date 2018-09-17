@@ -13,8 +13,13 @@ import './index.less';
 
 let preloadedState;
 try {
+  if (!localStorage.getItem('todostore')) {
+    throw "no localStorage";
+  }
+  
   preloadedState = JSON.parse(localStorage.getItem('todostore'));
 } catch(e) {
+  console.log('error', e);
   preloadedState = {};
 }
 
