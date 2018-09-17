@@ -16,6 +16,8 @@ import { titleRegex } from '../../utils/index';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+import './EditToDo.less';
+
 const data = [
   {
     label: '进行中',
@@ -59,37 +61,40 @@ class EditToDo extends Component {
   render() {
     const { match } = this.props;
     return(
-      <Form>
-        <FormGroup>
-          <ControlLabel>id</ControlLabel>
-            {match.params.id}
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel>标题</ControlLabel>
-          <Input value={this.state.title} onChange={this.handleTitleChange}/>
-          <HelpBlock>请输入修改之后的标题</HelpBlock>
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel>状态</ControlLabel>
-          <SelectPicker
-            value={this.state.status}
-            onChange={this.handleStatusChange}
-            data={data}
-          />
-          <HelpBlock>请输入修改之后的状态</HelpBlock>
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel>创建时间</ControlLabel>
-          <Input value={this.state.createTime} onChange={this.handleCreateTimeChange}/>
-          <HelpBlock>请输入修改之后的时间</HelpBlock>
-        </FormGroup>
-        <ButtonToolbar>
-          <Button appearance="primary" onClick={this.handleSubmit}>
-            提交
-          </Button>
-          <Button onClick={() => this.props.history.push('/main')}>返回</Button>
-        </ButtonToolbar>
-      </Form>
+      <div className="EditToDo">
+        <Form>
+          <FormGroup>
+            <ControlLabel>id</ControlLabel>
+            <Input value={match.params.id} disabled={true}/>
+            <HelpBlock>请输入修改之后的标题</HelpBlock>
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>标题</ControlLabel>
+            <Input value={this.state.title} onChange={this.handleTitleChange}/>
+            <HelpBlock>请输入修改之后的标题</HelpBlock>
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>状态</ControlLabel>
+            <SelectPicker
+              value={this.state.status}
+              onChange={this.handleStatusChange}
+              data={data}
+            />
+            <HelpBlock>请输入修改之后的状态</HelpBlock>
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>创建时间</ControlLabel>
+            <Input value={this.state.createTime} onChange={this.handleCreateTimeChange}/>
+            <HelpBlock>请输入修改之后的时间</HelpBlock>
+          </FormGroup>
+          <ButtonToolbar>
+            <Button appearance="primary" onClick={this.handleSubmit}>
+              提交
+            </Button>
+            <Button onClick={() => this.props.history.push('/main')}>返回</Button>
+          </ButtonToolbar>
+        </Form>
+      </div>
     );
   }
 
