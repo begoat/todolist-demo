@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-// import QueryInput from './QueryInput';
 import TodoEntity from './TodoEntity';
 
 import './ToDoForm.less';
@@ -42,8 +41,7 @@ class TodoForm extends Component {
         { 
           showActive && 
           <div className="ToDoFormTitleBar">
-            <span className="ToDoFormTitleText">进行中的</span>
-            <span className="ToDoFormTitleCount">{activeList.length}</span>
+            <span className="ToDoFormTitleText">进行中的({activeList.length})</span>
           </div>
         }
         {
@@ -60,8 +58,7 @@ class TodoForm extends Component {
         { 
           showComplete &&
           <div className="ToDoFormTitleBar">
-            <span className="ToDoFormTitleText">已完成的</span>
-            <span className="ToDoFormTitleCount">{completeList.length}</span>
+            <span className="ToDoFormTitleText">已完成的({completeList.length})</span>
           </div>
         }
         {
@@ -78,8 +75,7 @@ class TodoForm extends Component {
         { 
           showDeleted &&
           <div className="ToDoFormTitleBar">
-            <span className="ToDoFormTitleText">已删除的</span>
-            <span className="ToDoFormTitleCount">{deletedList.length}</span>
+            <span className="ToDoFormTitleText">已删除的({deletedList.length})</span>
           </div>
         }
         {

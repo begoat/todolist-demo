@@ -17,10 +17,10 @@ export const setRedirectToReferrer = (bool) => {
 
 export const verifyToken = () => {
   return (dispatch) => {
-    timeoutWrapper(5000, fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}`, { method: 'POST' }))
+    timeoutWrapper(5000, fetch('/fake.json', { method: 'GET' }))
       .then((res) => res.json())
       .then((data) => {
-        if (data.hello === 'world') {
+        if (data.status === 'bingo') {
           dispatch(setLoginStatus(1));
         } else {
           dispatch(setLoginStatus(2));
@@ -35,10 +35,11 @@ export const verifyToken = () => {
 
 export const requestLogin = () => {
   return (dispatch) => {
-    timeoutWrapper(5000, fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}`, { method: 'POST' }))
+    timeoutWrapper(5000, fetch('/fake.json', { method: 'GET' }))
       .then((res) => res.json())
       .then((data) => {
-        if (data.hello === 'world') {
+        console.log(data);
+        if (data.status === 'bingo') {
           dispatch(setLoginStatus(1));
           dispatch(setRedirectToReferrer(true));
         } else {

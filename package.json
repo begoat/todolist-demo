@@ -35,7 +35,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "rsuite": "^3.2.9",
+    "rsuite": "^3.2.10",
     "short-uuid": "^3.0.0"
   },
   "devDependencies": {
