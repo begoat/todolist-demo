@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "todolist react version setup from scretch",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack-dev-server --open --mode development --display-error-details --config webpack/webpack.config.js",
-    "build": "NODE_ENV=production webpack --mode production --progress --config webpack/webpack.config.js"
+    "build": "npm run clear-dist && npm run build-webpack",
+    "build-webpack": "mkdir ./dist && cp -R public/* ./dist/ && NODE_ENV=production webpack --mode production --progress --config webpack/webpack.config.js",
+    "clear-dist": "rm -rf dist",
+    "publish-github": "npm run build && node gh-pages.js",
+    "start": "webpack-dev-server --open --mode development --display-error-details --config webpack/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -54,6 +57,7 @@
     "dotenv-webpack": "^1.5.7",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
+    "gh-pages": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
